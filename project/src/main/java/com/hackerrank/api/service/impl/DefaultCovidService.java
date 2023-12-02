@@ -1,6 +1,7 @@
 package com.hackerrank.api.service.impl;
 
 import com.hackerrank.api.exception.BadRequestException;
+import com.hackerrank.api.exception.ElementNotFoundException;
 import com.hackerrank.api.model.Covid;
 import com.hackerrank.api.repository.CovidRepository;
 import com.hackerrank.api.service.CovidService;
@@ -34,16 +35,36 @@ public class DefaultCovidService implements CovidService {
 
   @Override
   public Covid getCovidById(Long id) {
-    return null;
+    return covidRepository
+            .findById(id)
+            .orElseThrow(() -> new ElementNotFoundException("Covid with ID not found"));
   }
 
   @Override
   public List<Covid> top5By(String by) {
-    return null;
+    switch (by) {
+      case "active":
+        return covidRepository.findTop5ByOrderByActiveDesc();
+      case "death":
+        return covidRepository.findTop5ByOrderByDeathDesc();
+      case "recovered":
+        return covidRepository.findTop5ByOrderByRecoveredDesc();
+      default:
+        throw new BadRequestException("invalid by");
+    }
   }
 
   @Override
   public Integer totalBy(String by) {
-    return null;
+    switch (by) {
+      case "active":
+        return covidRepository.findSumByActive().intValue();
+      case "death":
+        return covidRepository.findSumByDeath().intValue();
+      case "recovered":
+        return covidRepository.findSumByRecovered().intValue();
+      default:
+        throw new BadRequestException("invalid by");
+    }
   }
 }

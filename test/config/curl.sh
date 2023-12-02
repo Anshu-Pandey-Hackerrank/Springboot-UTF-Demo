@@ -41,6 +41,7 @@ while [ $counter -lt $(echo "$json_data" | jq length) ]; do
       curl_command="$curl_command --data-raw '$req_data_urlencoded'"
     fi
 
+
     response=$(eval "$curl_command" 2>&1)
     response_body=$(echo "$response" | sed '$d')
     http_status_code=$(echo "$response" | tail -n 1)
