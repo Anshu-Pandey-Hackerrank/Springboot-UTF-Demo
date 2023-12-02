@@ -3,8 +3,8 @@
 source test/config/config.sh
 PROJECT_PATH="project/"
 
-brew install lsof #mac
-# sudo apt install lsof -y #HRW
+# brew install lsof #mac
+sudo apt install lsof -y #HRW
 command -v lsof &> /dev/null || { echo "lsof command not found. Please install it."; exit 1; }
 
 if lsof -i :$PORT -t &> /dev/null; then
