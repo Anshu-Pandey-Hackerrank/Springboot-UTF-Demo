@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# sudo apt-get install -y jq #HRW
-brew install jq #mac
+sudo apt-get install -y jq #HRW
+# brew install jq #mac
 
 if command -v jq &> /dev/null; then
     echo "jq has been successfully installed."
