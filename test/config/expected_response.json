@@ -1,0 +1,285 @@
+[
+    {
+        "testsuite_name": "module 1",
+        "tests": [
+          {
+            "name": "Testcase_1",
+            "endpoint": "/covid",
+            "type": "GET",
+            "headers": {
+              "contentType": "application/json"
+            },
+            "req_data": {},
+            "expected_response": {
+              "status": 200,
+              "data": [
+                {
+                  "id": 1,
+                  "country": "country1",
+                  "active": 20,
+                  "death": 1,
+                  "recovered": 2
+                },
+                {
+                  "id": 2,
+                  "country": "country2",
+                  "active": 99,
+                  "death": 6,
+                  "recovered": 1
+                },
+                {
+                  "id": 3,
+                  "country": "country3",
+                  "active": 80,
+                  "death": 3,
+                  "recovered": 0
+                },
+                {
+                  "id": 4,
+                  "country": "country4",
+                  "active": 60,
+                  "death": 7,
+                  "recovered": 3
+                },
+                {
+                  "id": 5,
+                  "country": "country5",
+                  "active": 60,
+                  "death": 5,
+                  "recovered": 6
+                },
+                {
+                  "id": 6,
+                  "country": "country6",
+                  "active": 550,
+                  "death": 2,
+                  "recovered": 77
+                },
+                {
+                  "id": 7,
+                  "country": "country7",
+                  "active": 670,
+                  "death": 4,
+                  "recovered": 88
+                }
+              ]
+            }
+          },
+          {
+            "name": "Testcase_2",
+            "endpoint": "/covid/3",
+            "type": "GET",
+            "headers": {
+              "contentType": "application/json"
+            },
+            "req_data": {},
+            "expected_response": {
+              "status": 200,
+              "data": {
+                "id": 3,
+                "country": "country3",
+                "active": 80,
+                "death": 3,
+                "recovered": 0
+              }
+            }
+          },
+          {
+            "name": "Testcase_3",
+            "endpoint": "/covid/9",
+            "type": "GET",
+            "headers": {
+              "contentType": "application/json"
+            },
+            "req_data": {},
+            "expected_response": {
+              "status": 404,
+              "data": {}
+            }
+          }
+        ]
+    },
+    {
+      "testsuite_name": "module 2",
+      "tests": [
+        {
+          "name": "Testcase_4",
+          "endpoint": "/covid/top5?by=death",
+          "type": "GET",
+          "headers": {
+            "contentType": "application/json"
+          },
+          "req_data": {},
+          "expected_response": {
+            "status": 200,
+            "data": [
+              {
+                "id": 4,
+                "country": "country4",
+                "active": 60,
+                "death": 7,
+                "recovered": 3
+              },
+              {
+                "id": 2,
+                "country": "country2",
+                "active": 99,
+                "death": 6,
+                "recovered": 1
+              },
+              {
+                "id": 5,
+                "country": "country5",
+                "active": 60,
+                "death": 5,
+                "recovered": 6
+              },
+              {
+                "id": 7,
+                "country": "country7",
+                "active": 670,
+                "death": 4,
+                "recovered": 88
+              },
+              {
+                "id": 3,
+                "country": "country3",
+                "active": 80,
+                "death": 3,
+                "recovered": 0
+              }
+            ]
+          }
+        },
+        {
+          "name": "Testcase_5",
+          "endpoint": "/covid/top5?by=recovered",
+          "type": "GET",
+          "headers": {
+            "contentType": "application/json"
+          },
+          "req_data": {},
+          "expected_response": {
+            "status": 200,
+            "data": [
+              {
+                "id": 7,
+                "country": "country7",
+                "active": 670,
+                "death": 4,
+                "recovered": 88
+              },
+              {
+                "id": 6,
+                "country": "country6",
+                "active": 550,
+                "death": 2,
+                "recovered": 77
+              },
+              {
+                "id": 5,
+                "country": "country5",
+                "active": 60,
+                "death": 5,
+                "recovered": 6
+              },
+              {
+                "id": 4,
+                "country": "country4",
+                "active": 60,
+                "death": 7,
+                "recovered": 3
+              },
+              {
+                "id": 1,
+                "country": "country1",
+                "active": 20,
+                "death": 1,
+                "recovered": 2
+              }
+            ]
+          }
+        },
+        {
+          "name": "Testcase_6",
+          "endpoint": "/covid/top5?by=active",
+          "type": "GET",
+          "headers": {
+            "contentType": "application/json"
+          },
+          "req_data": {},
+          "expected_response": {
+            "status": 200,
+            "data":[
+              {
+                "id": 7,
+                "country": "country7",
+                "active": 670,
+                "death": 4,
+                "recovered": 88
+              },
+              {
+                "id": 6,
+                "country": "country6",
+                "active": 550,
+                "death": 2,
+                "recovered": 77
+              },
+              {
+                "id": 2,
+                "country": "country2",
+                "active": 99,
+                "death": 6,
+                "recovered": 1
+              },
+              {
+                "id": 3,
+                "country": "country3",
+                "active": 80,
+                "death": 3,
+                "recovered": 0
+              },
+              {
+                "id": 5,
+                "country": "country5",
+                "active": 60,
+                "death": 5,
+                "recovered": 6
+              }
+            ]
+          }
+        },
+        {
+          "name": "Testcase_7",
+          "endpoint": "/covid/top5?by=invalid",
+          "type": "GET",
+          "headers": {
+            "contentType": "application/json"
+          },
+          "req_data": {},
+          "expected_response": {
+            "status": 400,
+            "data":{}
+          }
+        }
+      ]
+  },
+    {
+        "testsuite_name": "module 3",
+        "tests": [
+          {
+            "name": "Testcase_10",
+            "endpoint": "/covid/total?by=invalid",
+            "type": "GET",
+            "headers": {
+              "contentType": "application/json"
+            },
+            "req_data": {},
+            "expected_response": {
+              "status": 400,
+              "data": {}
+            }
+          }
+        ]
+    }
+]

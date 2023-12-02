@@ -1,0 +1,16 @@
+version: 1.0
+configuration:
+  has_webserver: true
+  readonly_paths:
+    - project/test/index.spec.js
+    - project/test/mocha.opts
+    - project/data/data.js
+  scoring:
+    command: "bash test/main.sh"
+  ide_config:
+    default_open_files:
+      - project/src/main/java/com/hackerrank/api/Application.java
+    project_menu:
+      run: npm -C project start #nodejs
+      install: npm -C project install #nodejs
+      test: bash test/main.sh # npm test 
